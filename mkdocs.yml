@@ -60,8 +60,8 @@ nav:
     - JevDocumentReranker: rag/JevDocumentReranker.md
   - Tool Search:
     - JevToolIndex: toolsearch/JevToolIndex.md
-  - Chat Model:
-    - JevChatModel (experimental): chat/JevChatModel.md
+  - Decision Model:
+    - TypeSafeDecisionModel: decision/TypeSafeDecisionModel.md
   - Composing Decisions:
     - JevConfidenceGate: patterns/JevConfidenceGate.md
     - JevConsistency: patterns/JevConsistency.md

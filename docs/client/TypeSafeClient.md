@@ -122,7 +122,7 @@ client.systemOne(SystemOneRequest.builder()
 ```
 
 The SDK's own components (the judge, the RAG post-processors, the tool index and
-`JevChatModel`) build their requests in a fixed order.
+`TypeSafeDecisionModel`) build their requests in a fixed order.
 
 ## Reading answers
 

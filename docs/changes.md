@@ -1,5 +1,26 @@
 # Changes
 
+## 0.5.0 (unreleased)
+
+Jev is now available through Spring AI's portable `DecisionModel` API, and the
+experimental chat-model adapter is gone. This release needs Spring AI 2.1.0 or later.
+
+### New
+
+- **`TypeSafeDecisionModel`:** a Spring AI `DecisionModel` backed by `TypeSafeClient`.
+  `YesNoQuestion`, `ChoiceQuestion` and `ScoreQuestion` map onto `noul`, `choice` and
+  `score`; answers come back with Jev's probabilities and confidence, validated against the
+  prompt, and calls are observed as `decision` operations. The starter auto-configures it
+  when `typesafe-spring-ai` is present. See
+  [TypeSafeDecisionModel](decision/TypeSafeDecisionModel.md).
+
+### Breaking changes
+
+| Change | Migrate |
+|--------|---------|
+| **`JevChatModel` is removed.** Jev is not a chat model, and Spring AI now has an API made for it. | Replace `JevChatModel.builder(client).question(…)` with `TypeSafeDecisionModel.builder(client)` and put the questions on the `DecisionPrompt`. Read answers with `response.getYesNo/getChoice/getScore(name)` instead of `ChatClient.entity(…)`. |
+| **Spring AI 2.1.0 is required** for `typesafe-spring-ai`. | Bump `spring-ai-bom` to `2.1.0` or later. |
+
 ## 0.4.0
 
 The SDK runs against a local [Ollama](client/Ollama.md), and tool search stops padding its
@@ -66,7 +87,7 @@ change behaviour; each is listed below with how to migrate.
 ## 0.2.0 
 
 A stronger [Model-as-a-judge](judge/JevJudge.md) API, a sturdier self-refine advisor, and an
-experimental [`JevChatModel`](chat/JevChatModel.md). Most upgrades need a recompile and at
+experimental `JevChatModel` (removed in 0.5.0). Most upgrades need a recompile and at
 most a type rename; each breaking change below says how to migrate.
 
 ### New
@@ -98,7 +119,8 @@ most a type rename; each breaking change below says how to migrate.
 - **`JevChatModel`:** a Jev classifier behind Spring AI's `ChatModel`, so
   `ChatClient.entity(Record.class)` returns typed classifications. It supports native
   structured output, with the record checked against the questions before the call, and
-  standard `gen_ai.client.operation` observations. See [JevChatModel](chat/JevChatModel.md).
+  standard `gen_ai.client.operation` observations. Removed in 0.5.0 in favour of
+  [TypeSafeDecisionModel](decision/TypeSafeDecisionModel.md).
 
 **SDK**
 

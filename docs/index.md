@@ -40,8 +40,8 @@ double frustration = response.scoreValue("frustration");        // 1.1
 
 - A typed client with retries, a typed exception hierarchy and a batch API
 - `JevJudge` — Model-as-a-judge built from atomic criteria instead of one rubric prompt
-- Spring AI integrations that implement the framework's own SPIs: `CallAdvisor`,
-  `DocumentPostProcessor`, `ToolIndex` and `Evaluator`
+- Spring AI integrations that implement the framework's own SPIs: `DecisionModel`,
+  `CallAdvisor`, `DocumentPostProcessor`, `ToolIndex` and `Evaluator`
 
 ## Project Structure
 
@@ -62,7 +62,7 @@ spring-ai-typesafe/
 | `…typesafe.advisor` | [`JevSelfRefineAdvisor`](judge/JevSelfRefineAdvisor.md), [`JevGuardrailAdvisor`](guardrails/JevGuardrailAdvisor.md) | — |
 | `…typesafe.rag` | [`JevDocumentFilter`](rag/JevDocumentFilter.md), [`JevDocumentReranker`](rag/JevDocumentReranker.md) | `spring-ai-rag` |
 | `…typesafe.toolsearch` | [`JevToolIndex`](toolsearch/JevToolIndex.md) | `spring-ai-tool-search-tool` |
-| `…typesafe.chat` | [`JevChatModel`](chat/JevChatModel.md) (experimental) | — |
+| `…typesafe.decision` | [`TypeSafeDecisionModel`](decision/TypeSafeDecisionModel.md) | — |
 
 The last two dependencies are declared `<optional>true</optional>`, so an application that
 does not do RAG or tool search never sees those classes and never pays for the dependency.
@@ -107,7 +107,7 @@ Plain Java without Spring Boot needs only `typesafe-java-sdk`.
     apart from each other.
 
 !!! note
-    You need Java 17 or later and, for `typesafe-spring-ai`, Spring AI `2.0.1` or later.
+    You need Java 17 or later and, for `typesafe-spring-ai`, Spring AI `2.1.0` or later.
 
 **2. Set your API key:**
 
@@ -154,6 +154,7 @@ is set — see [Spring Boot Starter](client/SpringBootStarter.md).
 | If you want to… | Read |
 |-----------------|------|
 | Understand nouls, choices and scores | [The Three Primitives](concepts/primitives.md) |
+| Use Jev through Spring AI's portable `DecisionModel` API | [TypeSafeDecisionModel](decision/TypeSafeDecisionModel.md) |
 | Know when to act on an answer automatically | [Confidence](concepts/confidence.md) |
 | Evaluate a model's answers | [JevJudge](judge/JevJudge.md) |
 | Retry a bad answer automatically | [JevSelfRefineAdvisor](judge/JevSelfRefineAdvisor.md) |
@@ -168,7 +169,7 @@ is set — see [Spring Boot Starter](client/SpringBootStarter.md).
 
 - Java 17+
 - Spring Boot 4.x (for the starter)
-- Spring AI 2.0.1 or later (for `typesafe-spring-ai`)
+- Spring AI 2.1.0 or later (for `typesafe-spring-ai`)
 - Maven 3.6+
 - A TypeSafe API key, or a compatible local server such as [Ollama](client/Ollama.md) or [Laya](client/Laya.md)
 

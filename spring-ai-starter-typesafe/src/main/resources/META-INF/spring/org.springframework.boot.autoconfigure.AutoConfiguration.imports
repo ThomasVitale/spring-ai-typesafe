@@ -1,1 +1,2 @@
 org.springaicommunity.typesafe.autoconfigure.TypeSafeAutoConfiguration
+org.springaicommunity.typesafe.autoconfigure.TypeSafeDecisionModelAutoConfiguration

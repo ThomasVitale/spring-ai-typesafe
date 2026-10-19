@@ -57,7 +57,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.release>${java.version}</maven.compiler.release>
 
-		<spring-ai.version>2.0.1</spring-ai.version>
+		<spring-ai.version>2.1.0-SNAPSHOT</spring-ai.version>
 		<spring-boot.version>4.0.7</spring-boot.version>
 
 		<!-- plugin versions -->
@@ -76,8 +76,8 @@
 
 	<modules>
 		<module>typesafe-java-sdk</module>
-		<module>spring-ai-starter-typesafe</module>
 		<module>typesafe-spring-ai</module>
+		<module>spring-ai-starter-typesafe</module>
 		<module>typesafe-bom</module>
 		<module>examples</module>
 	</modules>

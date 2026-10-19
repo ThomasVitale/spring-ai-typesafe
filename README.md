@@ -46,7 +46,7 @@ The three primitives — `Noul`, `Choice` and `Score` — are described in
 | Module | What it is |
 | ------ | ---------- |
 | `typesafe-java-sdk` | The client: `TypeSafeClient`, the question/answer model, retries, batches, typed exceptions. No Spring AI dependency. |
-| `typesafe-spring-ai` | `JevJudge`, the advisors, and the RAG and tool-search integrations, on Spring AI's own SPIs |
+| `typesafe-spring-ai` | `TypeSafeDecisionModel`, `JevJudge`, the advisors, and the RAG and tool-search integrations, on Spring AI's own SPIs |
 | `spring-ai-starter-typesafe` | `spring.ai.typesafe.*` properties and an auto-configured `TypeSafeClient` bean |
 | `typesafe-bom` | Bill of materials for the three above |
 | `examples` | Eight runnable demos |
@@ -78,7 +78,7 @@ spring.ai.typesafe.api-key=${TYPESAFE_API_KEY}
 ```
 
 Plain Java without Spring Boot needs only `typesafe-java-sdk`. Java 17 or later; Spring AI
-`2.0.1` or later for `typesafe-spring-ai`. Importing `typesafe-bom` lets you drop the
+`2.1.0` or later for `typesafe-spring-ai`. Importing `typesafe-bom` lets you drop the
 versions — see
 [Getting Started](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/#quick-start).
 
@@ -91,6 +91,7 @@ versions — see
 | [JevGuardrailAdvisor](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/guardrails/JevGuardrailAdvisor/) | Screen prompts and answers; no retry, because an unsafe answer is not a draft |
 | [JevDocumentFilter](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/rag/JevDocumentFilter/) / [JevDocumentReranker](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/rag/JevDocumentReranker/) | Triage retrieved passages, then order what survives |
 | [JevToolIndex](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/toolsearch/JevToolIndex/) | Tool selection that can answer "none of these apply" |
+| [TypeSafeDecisionModel](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/decision/TypeSafeDecisionModel/) | Jev behind Spring AI's portable `DecisionModel` API |
 | [Composing decisions](https://spring-ai-community.github.io/spring-ai-typesafe/latest-snapshot/patterns/JevConfidenceGate/) | Confidence gates, self-consistency, weighted composite scores |
 
 ## Building
